@@ -1,41 +1,15 @@
+# notes on running:  https://docs.streamlit.io/knowledge-base/deploy/remote-start
+
 import streamlit as st
-import openai
+from oalib.solutions import create_code
 
-# Get the OpenAI API Key
-api_key = st.sidebar.text_input("OpenAI API Key:", type="password")
+st.title("Code Generator")
+st.write("Convert a comment into code in any language")
 
-# Setting up the Title
-st.title("🕹️ AI Question Answering Bot")
+language = st.text_input("Language", "python")
+text = st.text_area("Comment", "Calculate the mean distance between an array of points")
 
-st.write(
-    "_**Intelligent QA bot that will answer all your questions in zero shot based on the context from the internet.**_"
-)
-
-QUESTION = st.text_input("Input Question 👇")
-
-
-@st.cache
-def submit_question(question):
-    """This submits a question to the OpenAI API"""
-
-    # Setting the OpenAI API key got from the OpenAI dashboard
-    openai.api_key = api_key
-
-    result = openai.completions.create(
-        prompt=question,
-        temperature=0,
-        max_tokens=300,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0,
-        model="text-davinci-002",
-    )["choices"][0]["text"].strip(" \n")
-    return result
-
-
-if st.button("Submit"):
-    st.write("**Output**")
-    st.write("""---""")
+if st.button("Generate Code"):
     with st.spinner(text="In progress"):
-        report_text = submit_question(QUESTION)
-        st.markdown(report_text)
+        code = create_code(text, language)
+        st.code(code)
