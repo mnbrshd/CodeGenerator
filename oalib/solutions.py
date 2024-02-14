@@ -48,6 +48,6 @@ def create_code(text, language):
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0,
-        model="davinci-codex",
+        model="gpt-3.5-turbo-instruct",
     )
     return result.choices[0].text.strip(" \n")
