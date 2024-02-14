@@ -1,4 +1,3 @@
-
 ---
 title: Code Generator
 emoji: 🌖
@@ -14,4 +13,4 @@ license: cc
 [![Sync to Hugging Face hub - Code Generator](https://github.com/mnbrshd/CodeGenerator/actions/workflows/main.yml/badge.svg)](https://github.com/mnbrshd/CodeGenerator/actions/workflows/main.yml)
 
 
-[Try Demo Text Summarization Here](https://huggingface.co/spaces/mnbrshd/CodeGenerator)
+[Try Demo Code Generation Here](https://huggingface.co/spaces/mnbrshd/CodeGenerator)
